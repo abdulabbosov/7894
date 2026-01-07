@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@radix-ui/themes": "^3.2.1",
     "@tailwindcss/cli": "^4.1.18",
     "tailwindcss": "^4.1.18"
   },

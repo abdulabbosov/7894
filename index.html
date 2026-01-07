@@ -8,24 +8,46 @@
 </head>
 <body>
     <div class="grid grid-cols-3 gap-10" id="container"></div>
+    <div class="grid grid-cols-3 gap-10" id="loader"></div>
+
 <template id="templateCard">
     <div class="card bg-base-100 shadow-sm">
   <figure>
     <img
       src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
       alt="Shoes" 
-      width="222"
-      height="160"
+      
       />
   </figure>
   <div class="card-body">
     <h2 class="card-title"></h2>
     <p></p>
     <div class="card-actions justify-end">
-      <button class="btn btn-primary">Buy Now</button>
+      <div class="skeleton w-23 h-10 "></div>
     </div>
   </div>
-</div></template>
+</div>
+</template>
+
+<template id="templateSkeleton">
+    <div class="card bg-base-100 shadow-sm">
+  <figure>
+    
+  <div class="skeleton h-41.5 w-55.5"></div>
+
+  </figure>
+  <div class="skeleton h-6.5 w-full"   >
+    <div class="flex gap-2">
+      <div class="skeleton h-5 w-40.5"></div>
+      <div class="skeleton h-5 w-40.5"></div>
+
+    </div>
+    <div class="card-actions justify-end">
+      <button class="btn btn-error">Error</button>
+    </div>
+  </div>
+</div>
+</template>
 
     <script type="module" src="app.js"></script>
 </body>
