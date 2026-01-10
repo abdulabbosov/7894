@@ -1,4 +1,7 @@
     const elContainer = document.getElementById("container");
+    const elPrev = document.getElementById("prev");
+    const elNext = document.getElementById("next");
+
 
 
 fetch("https://json-api.uz/api/project/fn44-amaliyot/cars/").then((res)=> {
@@ -36,7 +39,7 @@ function loader (bool) {
    
     if(bool) {
 elLoader.innerHTML = null;
-        Array.from({length:100}, (_, index) => index).forEach(()=> {
+        Array.from({length:80  }, (_, index) => index).forEach(()=> {
 
         elLoader.appendChild(elLoaderTemplate.cloneNode(true).content)
         })
@@ -71,3 +74,15 @@ function deleteCar(id) {
 .catch(()=>{})
 .finally(()=> {}); 
 }
+ elPrev.addEventListener("click", ()=> {
+  if (currentIndex > 0) {
+         currentIndex--; render();
+         } 
+ });
+ elNext.addEventListener("click", ()=> {
+     if (currentIndex < data.length - 1) {
+         currentIndex++; render();
+         }
+    
+ });
+
