@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="./css/output.css">
 </head>
 <body>
+  <header>
+    <div class="flex justify-end ">
+      <button class="btn mt-5 bg-blue-700 " onclick="my_modal_3.showModal()">+ Add</button>
+    </div>
+    
+  </header>
     <div class="flex gap-5 p-5">
       <button class="btn btn-info" id="prev">Prev</button>
       <button class="btn btn-info" id="next">Next</button>
@@ -36,6 +42,17 @@
   </div>
 </div>
 </template>
+<template id="toastTemplate">
+  <div role="alert" class="alert alert-info ">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  </svg>
+  <span>New software update available.</span>
+</div>
+</template>
+<div class="fixed top-5 flex-col gap-3 right-5 z-999" id="toast">
+
+</div>
 
 <template id="templateSkeleton">
     <div class="card bg-base-100 shadow-sm">
@@ -56,6 +73,29 @@
   </div>
 </div>
 </template>
+<!-- You can open the modal using ID.showModal() method -->
+<dialog id="my_modal_3" class="modal">
+  <div class="modal-box">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ">✕</button>
+   
+    <h3 class="text-lg font-bold">Mashina qo'shish</h3>
+    <p class="py-4">Yangi mashina qo'shish uchun ma'lumot kiriting!</p>
+      <form class="flex flex-col gap-2" id="carAddForm">
+    <input class="w-full h-12 !pl-3 mb-2 js-car-name input" type="text" placeholder="  Mashina nomini kiriting" class="input" />
+    <input class="w-full h-12 !pl-3 js-car-year input" min="2000" max="2026" type="number" placeholder="  Mashina chiqarilgan yil" class="input" />
+    <label class="flex js-car-color " for="Raglar gap-2">
+      <strong >Rang: </strong><input class=" !pl-3 gap-2 " type="color" class="input" /></label><br>
+   </form>
+
+  <label class="input w-full">
+  
+  <input type="text" class="grow w-full gap-2 js-car-speed" placeholder="Mashina max tezligi" />
+  km/h
+</label>
+  <input class="w-full h-12 px-3 gap-2 js-car-power input mt-2" min="38" max="1200"  type="text" placeholder="Divigitel quvvati" class="input" />
+<button id="submitButton" class="btn btn-wide min-w-full bg-blue-500 h-12 mt-2 w-full">Tasdiqlash</button>
+  </div>
+</dialog> 
 
     <script type="module" src="app.js"></script>
       

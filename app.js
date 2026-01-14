@@ -1,6 +1,15 @@
     const elContainer = document.getElementById("container");
     const elPrev = document.getElementById("prev");
-    const elNext = document.getElementById("next");
+    const elNext = document.getElementById("next")
+    const elCarName = document.querySelector(".js-car-name");
+    const elCarYear = document.querySelector(".js-car-year");
+    const elCarColor = document.querySelector(".js-car-color");
+    const elCarPower = document.querySelector(".js-car-power");
+    const elCarSpeed = document.querySelector(".js-car-speed");
+    const elFormButton = document.getElementById("submitButton");
+    const elToastTemlate = document.getElementById("toastTemplate");
+    const elToast = document.getElementById("toast")
+
 
 
 
@@ -25,7 +34,6 @@ function ui(data) {
         // clone.querySelector("img").src = element.image;  
         clone.querySelector("p").innerText = element.id; 
         clone.querySelector("button").id = element.id;  
-
         elContainer.appendChild(clone)
 
     });
@@ -83,6 +91,34 @@ function deleteCar(id) {
      if (currentIndex < data.length - 1) {
          currentIndex++; render();
          }
-    
+         
  });
 
+elFormButton.addEventListener("click", () => {
+const obj = {
+    name: elCarName.value,
+    year: elCarYear.value,  
+    color: elCarColor.value,
+    ot_kuchi: elCarPower.value,
+    max_tezligi: elCarSpeed.value
+
+
+};
+if(obj.name.trim() === "") {
+    const clone = elToastTemlate.cloneNode(true).content;
+    clone.querySelector("span").innerText = "Mashina nomini kiriting"
+    elToast.appendChild(clone);
+    elCarName.focus();
+    setTimeout(() => {
+        document.querySelector(`[role="alert"]`).remove();
+    },2000)
+}
+
+elCarName.value = "";
+elCarYear.value = "";
+elCarColor.value = "";
+elCarPower.value = "";
+elCarSpeed.value = "";
+
+
+});
