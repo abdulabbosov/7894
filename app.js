@@ -9,11 +9,10 @@
     const elFormButton = document.getElementById("submitButton");
     const elToastTemlate = document.getElementById("toastTemplate");
     const elToast = document.getElementById("toast")
+    const elCarForm = document.getElementById("carAddForm");
 
 
-
-
-fetch("https://json-api.uz/api/project/fn44-amaliyot/cars/").then((res)=> {
+fetch("https://json-api.uz/api/project/game-over/animals").then((res)=> {
    return res.json();
 }).then((res)=> {
     ui(res.data);
@@ -67,8 +66,8 @@ elContainer.addEventListener("click", (evt) => {
 });
 
 function deleteCar(id) {
-    fetch("https://json-api.uz/api/project/fn44-amaliyot/cars/" +id, {
-        method:"DELETE",
+    fetch("https://json-api.uz/api/project/game-over/animals/" +id, {
+        method:"PATCH",
     })
     .then((res)=> {
    return res.text();
@@ -94,31 +93,28 @@ function deleteCar(id) {
          
  });
 
-elFormButton.addEventListener("click", () => {
-const obj = {
-    name: elCarName.value,
-    year: elCarYear.value,  
-    color: elCarColor.value,
-    ot_kuchi: elCarPower.value,
-    max_tezligi: elCarSpeed.value
-
-
-};
-if(obj.name.trim() === "") {
-    const clone = elToastTemlate.cloneNode(true).content;
-    clone.querySelector("span").innerText = "Mashina nomini kiriting"
-    elToast.appendChild(clone);
-    elCarName.focus();
-    setTimeout(() => {
-        document.querySelector(`[role="alert"]`).remove();
-    },2000)
-}
-
-elCarName.value = "";
-elCarYear.value = "";
-elCarColor.value = "";
-elCarPower.value = "";
-elCarSpeed.value = "";
-
+elCarForm.addEventListener("submit", (evt) => {
+evt.preventDefault();
+const formData = new FormData(elCarForm);
+const result = {}
+formData.forEach((value,key)=> {
+    console.log(key,value);
+    
+result[key] = value
+});    
+console.log(result);
 
 });
+
+function add (data) {
+    fetch("https://json-api.uz/api/project/game-over/animals",{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+    .then((res) => {
+        return res.json();
+    } )
+}

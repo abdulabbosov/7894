@@ -8,6 +8,35 @@
 </head>
 <body>
   <header>
+    <label class="flex cursor-pointer gap-2">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5" />
+    <path
+      d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+  </svg>
+  <input type="checkbox" value="synthwave" class="toggle theme-controller" />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</label>
     <div class="flex justify-end ">
       <button class="btn mt-5 bg-blue-700 " onclick="my_modal_3.showModal()">+ Add</button>
     </div>
@@ -32,6 +61,9 @@
     <h2 class="card-title"></h2>
     <p></p>
     <div class="card-actions justify-end">
+         <button class="btn btn-error bg-emerald-600 js-edit-button">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8536 1.14645C11.6583 0.951184 11.3417 0.951184 11.1465 1.14645L3.71455 8.57836C3.62459 8.66832 3.55263 8.77461 3.50251 8.89155L2.04044 12.303C1.9599 12.491 2.00189 12.709 2.14646 12.8536C2.29103 12.9981 2.50905 13.0401 2.69697 12.9596L6.10847 11.4975C6.2254 11.4474 6.3317 11.3754 6.42166 11.2855L13.8536 3.85355C14.0488 3.65829 14.0488 3.34171 13.8536 3.14645L11.8536 1.14645ZM4.42166 9.28547L11.5 2.20711L12.7929 3.5L5.71455 10.5784L4.21924 11.2192L3.78081 10.7808L4.42166 9.28547Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+      </button>
       <div class="tooltip" data-tip="Remove ">
 
       <button class="btn btn-error js-delete-button">
@@ -55,7 +87,7 @@
 </div>
 
 <template id="templateSkeleton">
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm">    
   <figure>
     
   <div class="skeleton h-41.5 w-55.5"></div>
@@ -81,21 +113,31 @@
     <h3 class="text-lg font-bold">Mashina qo'shish</h3>
     <p class="py-4">Yangi mashina qo'shish uchun ma'lumot kiriting!</p>
       <form class="flex flex-col gap-2" id="carAddForm">
-    <input class="w-full h-12 !pl-3 mb-2 js-car-name input" type="text" placeholder="  Mashina nomini kiriting" class="input" />
-    <input class="w-full h-12 !pl-3 js-car-year input" min="2000" max="2026" type="number" placeholder="  Mashina chiqarilgan yil" class="input" />
+    <input
+     class="w-full h-12 !pl-3 mb-2
+      js-car-name input" type="text"
+     placeholder="  Mashina nomini kiriting"
+      class="input"
+       name="name" />
+    <input class="w-full h-12 !pl-3 js-car-year input" min="2000" max="2026" type="number" placeholder="  Mashina chiqarilgan yil" class="input" name="year" />
     <label class="flex js-car-color " for="Raglar gap-2">
-      <strong >Rang: </strong><input class=" !pl-3 gap-2 " type="color" class="input" /></label><br>
+      <strong >Rang: </strong><input class=" !pl-3 gap-2 " type="color" class="input" name="color" /></label><br>
    </form>
 
   <label class="input w-full">
   
-  <input type="text" class="grow w-full gap-2 js-car-speed" placeholder="Mashina max tezligi" />
+  <input type="text" class="grow w-full gap-2 js-car-speed" placeholder="Mashina max tezligi"  name="maxSpeed"/>
   km/h
 </label>
-  <input class="w-full h-12 px-3 gap-2 js-car-power input mt-2" min="38" max="1200"  type="text" placeholder="Divigitel quvvati" class="input" />
+  <input class="w-full h-12 px-3 gap-2 js-car-power input mt-2" min="38" max="1200"  type="text" placeholder="Divigitel quvvati" class="input" name="horsePower" />
 <button id="submitButton" class="btn btn-wide min-w-full bg-blue-500 h-12 mt-2 w-full">Tasdiqlash</button>
   </div>
 </dialog> 
+<footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+  <aside>
+    <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+  </aside>
+</footer>
 
     <script type="module" src="app.js"></script>
       
